@@ -1,5 +1,5 @@
 import React, {useState}from "react";
-import {ImageBackground, SafeAreaView, View, Text} from "react-native";
+import {ImageBackground, SafeAreaView, View, Text, Touchable, TouchableOpacity} from "react-native";
 import BirthdayPage from "./BirthdayPage";
 import GenderPage from "./GenderPage";
 import NamePage from "./NamePage";
@@ -13,9 +13,27 @@ import Map from "../Map/Map";
 const PersonalInfo = () => {
     const [tab, setTab] = useState(1);
 
+    const changeTab = (type: string) => {
+        if(type === "skip"){
+            if(tab === 5){
+                setTab(5)
+            }else{
+                setTab(tab +1)
+            }
+        }else{
+            if(tab === 1){
+                setTab(1)
+            }else{
+                setTab(tab - 1)
+            }
+        }
+    }
+
     return(
         <SafeAreaView style={styles.container}>
-            <Text style={styles.skip}>SKIP</Text>
+            <TouchableOpacity style={styles.skip} onPress={() => changeTab("skip")}>
+                <Text style={{color: "#fff"}}>SKIP</Text>
+            </TouchableOpacity>
                 {tab === 1 && <NamePage setTab={setTab}/>}
                 {tab === 2 && <GenderPage setTab={setTab}/>}
                 {tab === 3 && <BirthdayPage setTab={setTab}/>}
@@ -23,15 +41,17 @@ const PersonalInfo = () => {
                 {tab === 5 && <SportsPage />}
 
                 <View style={styles.arrowFrame}>
-                    <ArrowLeft/>
+                    <TouchableOpacity onPress={() => changeTab("back")}>
+                        <ArrowLeft/>
+                    </TouchableOpacity>
                     <View style={styles.dotsFrame}>
-                        <View style={styles.dots}></View>
-                        <View style={styles.dots}></View>
-                        <View style={styles.dots}></View>
-                        <View style={styles.dots}></View>
-                        <View style={styles.dots}></View>
+                        {[...Array(5)].map((item, index)=>
+                            <View style={[styles.dots, (index + 1) === tab &&{width: 17, backgroundColor: "#48C5B5"}]} key={index}></View>
+                        )}
                     </View>
-                    <ArrowRight />
+                    <TouchableOpacity onPress={() => changeTab("skip")}>
+                        <ArrowRight />
+                    </TouchableOpacity>
                 </View>         
         </SafeAreaView>
     );
