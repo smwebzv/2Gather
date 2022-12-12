@@ -66,7 +66,9 @@ const PhotoPage = ({setTab}) => {
                 <Text style={[styles.text, {fontSize: 14, paddingLeft: 12}]}>Set as profile image</Text>
             </View>
             <View style={styles.pictureFrame}>
-                <View style={styles.pictureIcons}>
+                {
+                [...Array(3)].map((item, index) =>
+                <View style={styles.pictureIcons} key={index}>
                     {
                         show && 
                         <>
@@ -76,55 +78,23 @@ const PhotoPage = ({setTab}) => {
                             }}
                             style={{width: "100%", height: "100%", position: "absolute"}}
                             />
-                            <TouchableOpacity style={styles.close} onPress={deletePicture}>
+                            <TouchableOpacity style={styles.close} onPress={() => deletePicture()}>
                                 <Close />
                             </TouchableOpacity>
                         </>
                     }
                     <PictureIcon width={24} height={24}/>
                 </View>
-                <View style={styles.pictureIcons}>
-                    {
-                        show && 
-                        <>
-                            <ImageBackground 
-                                source={{
-                                    uri: image
-                                }}
-                                style={{width: "100%", height: "100%", position: "absolute"}}
-                            />
-                            <TouchableOpacity style={styles.close} onPress={deletePicture}>
-                                <Close />
-                            </TouchableOpacity>
-                        </>
-                    }
-                    <PictureIcon width={24} height={24}/>
-                </View>
-                <View style={styles.pictureIcons}>
-                    {
-                        show && 
-                        <>
-                            <ImageBackground 
-                                source={{
-                                    uri: image
-                                }}
-                                style={{width: "100%", height: "100%", position: "absolute"}}
-                            />
-                            <TouchableOpacity style={styles.close} onPress={deletePicture}>
-                                <Close />
-                            </TouchableOpacity>
-                        </>
-                    }
-                    <PictureIcon width={24} height={24}/>
-                </View>
+                )
+                }
                 <View style={styles.pictureIcons} >
                     <Plus onPress={onSelectImage}/>
                 </View>
             </View>
             <View style={[styles.buttonFrame, {marginBottom: 43}]}>
-                <Pressable style={styles.button}>
-                    <Text style={styles.buttonText} onPress={() => setTab(5)}>Next</Text>
-                </Pressable>
+                <TouchableOpacity style={[styles.button ,check === true &&{backgroundColor: "#F4F3FF4D"}]}>
+                    <Text style={styles.buttonText} onPress={() => check === true ? null : setTab(5)}>Next</Text>
+                </TouchableOpacity>
             </View>
         </View>
     );
