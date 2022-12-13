@@ -16,6 +16,12 @@ interface ItemPropsLevel{
 }
 
 const SportsPage = ({setTab}) => {
+    const [cart, setCart] = useState([
+        {
+            sport: "",
+            id: 0
+        }
+    ])
     const [sports, setSports] = useState([
         {
             sport: "Football",
@@ -63,29 +69,42 @@ const SportsPage = ({setTab}) => {
         setSelectedItemLevel(item)
     }
 
-    const handleAddSports = () => {
-        const newSports = {
-            sport: "",
-            id: 0
-        };
-        setSports([...sports, newSports]);
+    const handleAddSports = (id) => {
+        const oldCart = cart.slice();
+            oldCart.push({
+                sport: "",
+                id: id
+            })
+        setCart(oldCart);
     };
 
+    const removeFromCart = (index) => {
+        const oldCart = cart.slice();
+        oldCart.splice(index, 1);
+        setCart(oldCart)
+    }
+
     return(
-        <View style={{width: "100%"}}>
+        <View style={{width: "100%", flexDirection: "column"}}>
             <Text style={[styles.textTitle, {paddingBottom: 30}]}>What sports are you into?</Text>
             <View style={{flexDirection: "row", }}>
                 <Text style={styles.textTitle}>1.</Text>
                 <View style={{flexDirection: "row", alignItems: "flex-start"}}>
-                    <View style={{marginHorizontal: 12, width: 300}}>
-                        <View style={{marginBottom: 8}}>
-                            <SelectSports selectedItem={selectedItem} onSelect={onSelect} handleAddSports={handleAddSports} sports={sports}/>
+                        <View style={{marginHorizontal: 12, width: 300}} >
+                        {
+                        cart.map((item, index) => 
+                            <>
+                            <View style={{marginBottom: 8}} key={index}>
+                                <SelectSports selectedItem={selectedItem} onSelect={onSelect} handleAddSports={handleAddSports} sports={sports}/>
+                            </View>
+                            <View style={{marginBottom: 16}}>
+                                <SelectLevel selectedItemLevel={selectedItemLevel} onSelectLevel={onSelectLevel}/>
+                            </View>
+                            </>
+                        )
+                        }
                         </View>
-                        <View>
-                            <SelectLevel selectedItemLevel={selectedItemLevel} onSelectLevel={onSelectLevel}/>
-                        </View>
-                    </View>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => removeFromCart()}>
                         <MinusCircle />
                     </TouchableOpacity>
                 </View>

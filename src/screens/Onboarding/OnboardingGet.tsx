@@ -1,6 +1,6 @@
 import React from "react";
 import {ImageBackground, Pressable, SafeAreaView, Text, View } from "react-native";
-import styles from "./OnboardingStyle";
+import styles from "./Onboarding.style";
 import Logo from "../../assets/logo/GATHER.svg";
 
 const OnboardingGet = ({navigation}) => {
