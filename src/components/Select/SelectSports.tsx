@@ -1,31 +1,23 @@
 import React, { useState } from 'react';
 import {TouchableOpacity, View, Text } from 'react-native';
-import styles from './SelectGenderStyle';
+import styles from './SelectLevelStyle';
 import ArrowDown from "../../assets/icons/arrowDown.svg";
 
 interface IProps{
     selectedItem: ItemProps,
-    onSelect: (item: ItemProps) => void
+    onSelect: (item: ItemProps) => void,
+    handleAddSports:() => void,
+    sports: any
 }
 
 interface ItemProps{
-    label: string
+    sport: string
     id: number
 }
 
-const SelectGender = ({selectedItem, onSelect}: IProps) => {
+const SelectSport = ({selectedItem, onSelect, sports}: IProps) => {
 
     const [dropDown, setDropDown] = useState(false);
-    const [gender, setGender] = useState([
-        {
-            label: "Male",
-            id: 1,
-        },
-        {
-            label: "Female",
-            id: 2,
-        },
-    ]);
 
     const dropDownGender = () => {
         setDropDown(!dropDown);
@@ -40,7 +32,7 @@ const SelectGender = ({selectedItem, onSelect}: IProps) => {
     <>
     <View style={[styles.containter, dropDown &&{borderBottomLeftRadius: 0, borderBottomRightRadius: 0}]}>
         <TouchableOpacity style={styles.textAndArrow}>
-            <Text style={[styles.text, selectedItem &&{color: "#2D2D2D"}]}>{selectedItem.label !== "" ? selectedItem.label : `Select gender`}</Text>
+            <Text style={styles.text}>{selectedItem.sport !== "" ? selectedItem.sport : `Select sports`}</Text>
             <TouchableOpacity style={styles.arrow} onPress={dropDownGender}>
                 <ArrowDown />
             </TouchableOpacity>
@@ -49,9 +41,9 @@ const SelectGender = ({selectedItem, onSelect}: IProps) => {
         { dropDown && 
             <View style={styles.dropDownStyle}>
             {
-                gender.map((item, index) => 
+                sports.map((item, index) => 
                 <TouchableOpacity key={index} onPress={() => onSelectedItem(item)}>
-                    <Text style={[styles.text, {height: 30}]}>{item.label}</Text>
+                    <Text style={[styles.text, {height: 30}]}>{item.sport}</Text>
                 </TouchableOpacity>
                 )
             }
@@ -61,4 +53,4 @@ const SelectGender = ({selectedItem, onSelect}: IProps) => {
   );
 };
 
-export default SelectGender;
+export default SelectSport;

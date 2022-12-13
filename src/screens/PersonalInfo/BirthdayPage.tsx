@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import {View, Text, TextInput, Pressable} from "react-native";
-import SelectBirthday from "../../components/Select/SelectBirthday";
+import SelectDays from "../../components/Select/SelectDays";
+import SelectMonth from "../../components/Select/SelectMonth";
+import SelectYears from "../../components/Select/SelectYears";
 import styles from "./PersonalInfoStyle";
 
 
@@ -10,13 +12,13 @@ const BirthdayPage = ({setTab}) => {
             <Text style={styles.textTitle}>What’s your birthday?</Text>
             <View style={[styles.inputHolder, {marginBottom: 128, flexDirection: "row", justifyContent: "space-between"}]}>
                 <View style={{width: 94}}>
-                    <SelectBirthday />
+                    <SelectDays />
                 </View>
                 <View style={{width: 94}}>
-                    <SelectBirthday />
+                    <SelectMonth />
                 </View>
                 <View style={{width: 94}}>
-                    <SelectBirthday />
+                    <SelectYears />
                 </View>
             </View>
             <View style={styles.buttonFrame}>

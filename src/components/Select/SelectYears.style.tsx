@@ -4,10 +4,10 @@ const styles = StyleSheet.create({
     containter: {
       width: "100%",
       height: 50,
-      alignItems: "flex-end",
+      alignItems: "center",
       justifyContent: "center",
-      paddingLeft: 17,
-      paddingRight: 13,
+      paddingLeft: 9,
+      paddingRight: 5,
       fontFamily: 'Inter',
       fontWeight: "400",
       fontSize: 14,
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
       color: "#757F8C",
       fontSize: 14,
       fontWeight: "400",
-      fontFamily: "Inter"
+      fontFamily: "Inter",
     },
     arrow:{
       width: 24,
@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     },
     dropDownStyle:{
       width: "100%",
+      maxHeight: 300,
       position: "absolute",
       top: 50,
       left: 0,
@@ -43,8 +44,8 @@ const styles = StyleSheet.create({
       paddingTop: 10,
       borderBottomLeftRadius: 0,
       borderBottomRightRadius: 0,
-      alignItems: "flex-start",
-      justifyContent: "center"
+      overflow: "hidden",
+      zIndex: 1
     },
 })
 

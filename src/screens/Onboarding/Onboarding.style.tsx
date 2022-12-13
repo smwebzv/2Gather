@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         width: 312,
         color: "#ffffff",
         fontSize: 15,
-        fontWeight: "700",
+        fontWeight: "500",
         fontFamily: 'Inter',
         textAlign: "center",
         paddingTop: 16,

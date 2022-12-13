@@ -6,7 +6,7 @@ import AppleLogo from "../../assets/icons/appleLogo.svg";
 import Eye from "../../assets/icons/eye.svg";
 import EyeOff from "../../assets/icons/eyeOff.svg";
 import { useDispatch } from "react-redux";
-import { setToken } from "../../redux/actions/AuthAction";
+import { setProfile, setToken } from "../../redux/actions/AuthAction";
 import Button from "../../components/Button/Button";
 
 const Login = ({navigation}) => {
@@ -15,8 +15,8 @@ const Login = ({navigation}) => {
     
     const login = () => {
         dispatch(setToken(true));
+        dispatch(setProfile(true))
     }
-
     return(
         <SafeAreaView style={styles.container}>
             <Text style={styles.text}>Login</Text>

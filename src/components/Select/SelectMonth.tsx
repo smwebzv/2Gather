@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
-import {TouchableOpacity, View, Text } from 'react-native';
-import styles from './SelectBirthdayStyle';
+import {TouchableOpacity, View, Text, ScrollView, FlatList } from 'react-native';
+import styles from './SelectYears.style';
 import ArrowDown from "../../assets/icons/arrowDown.svg";
 
-
-
-const SelectBirthday = () => {
+const SelectMonth = () => {
 
     const [dropDown, setDropDown] = useState(false);
     const [selectedItem, setSelectedItem] = useState(false);
-    const [date, setDate] = useState([{ year: "", month: "", day: "" }]);
 
     const dropDownGender = () => {
         setDropDown(!dropDown);
@@ -24,29 +21,33 @@ const SelectBirthday = () => {
         onSelect(item)
     }
 
+    const month = (new Date()).getMonth();
+    const months = Array.from(new Array(12),( val, index) => index+1);
+
   return (
     <>
     <View style={[styles.containter, dropDown &&{borderBottomLeftRadius: 0, borderBottomRightRadius: 0}]}>
         <TouchableOpacity style={styles.textAndArrow}>
-            <Text style={[styles.text, selectedItem &&{color: "#2D2D2D"}]}>{selectedItem ? selectedItem.label : `DD`}</Text>
+            <Text style={[styles.text, selectedItem &&{color: "#2D2D2D"}]}>{selectedItem ? selectedItem : `MM`}</Text>
             <TouchableOpacity style={styles.arrow} onPress={dropDownGender}>
                 <ArrowDown />
             </TouchableOpacity>
         </TouchableOpacity>            
     </View>
         { dropDown && 
-            <View style={styles.dropDownStyle}>
-            {
-                date.map((item, index) => 
+       
+            <FlatList
+            style={styles.dropDownStyle} 
+                data={months}
+                renderItem={({item, index}) =>
                 <TouchableOpacity key={index} onPress={() => onSelectedItem(item)}>
-                    <Text style={[styles.text, {height: 30}]}>{item.year}</Text>
+                    <Text style={[styles.text, {height: 30}]}>{index +1}</Text>
                 </TouchableOpacity>
-                )
             }
-            </View>
+            /> 
         }
     </>
   );
 };
 
-export default SelectBirthday;
+export default SelectMonth;

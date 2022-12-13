@@ -27,7 +27,7 @@ const GenderPage = ({setTab}) => {
                 <SelectGender selectedItem={selectedItem} onSelect={onSelect}/>
             </View>
             <View style={styles.buttonFrame}>
-                <Pressable style={[styles.button, selectedItem.label === "" &&{backgroundColor: "#F4F3FF"}]}>
+                <Pressable style={[styles.button, selectedItem.label === "" &&{backgroundColor: "#F4F3FF4D"}]}>
                     <Text style={styles.buttonText} onPress={() => selectedItem.label === "" ? null : setTab(3)}>Next</Text>
                 </Pressable>
             </View>
