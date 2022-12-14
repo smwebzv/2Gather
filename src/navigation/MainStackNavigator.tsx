@@ -30,7 +30,8 @@ const MainStackNavigator = () => {
                 <ProfileNavigation />
                 :
                 <AppNavigation />
-                }
+                } 
+                {/* <AppNavigation /> */}
             </NavigationContainer>
         </ImageBackground>
     )

@@ -8,10 +8,12 @@ import PhotoPage from "./PhotoPage";
 import SportsPage from "./SportsPage";
 import ArrowLeft from "../../assets/icons/leftArrow";
 import ArrowRight from "../../assets/icons/rightArrow";
-import Map from "../Map/Map";
+import { useDispatch } from "react-redux";
+import { setProfile, setToken } from "../../redux/actions/AuthAction";
 
 const PersonalInfo = () => {
     const [tab, setTab] = useState(1);
+    const dispatch = useDispatch()
     
     const changeTab = (type: string) => {
         if(type === "skip"){
@@ -27,6 +29,11 @@ const PersonalInfo = () => {
                 setTab(tab - 1)
             }
         }
+    }
+
+    const submitPersonalInfo = () => {
+        dispatch(setToken(true))
+        dispatch(setProfile(true))
     }
 
     return(
@@ -53,7 +60,7 @@ const PersonalInfo = () => {
                         </View>
                         :
                         <View style={{marginLeft: 95}}>
-                            <TouchableOpacity style={styles.button}>
+                            <TouchableOpacity style={styles.button} onPress={() => submitPersonalInfo()}>
                                 <Text style={styles.buttonText}>Done</Text>
                             </TouchableOpacity>
                         </View>

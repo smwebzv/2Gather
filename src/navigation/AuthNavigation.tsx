@@ -3,7 +3,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from '../screens/Login/Login';
 import Onboarding from '../screens/Onboarding/Onboarding';
 import SignUp from '../screens/SignUp/SignUp';
-import { ImageBackground } from 'react-native';
 
 const Stack = createNativeStackNavigator()
 
