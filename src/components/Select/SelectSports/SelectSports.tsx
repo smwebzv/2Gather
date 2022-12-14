@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {TouchableOpacity, View, Text } from 'react-native';
-import styles from './SelectLevelStyle';
-import ArrowDown from "../../assets/icons/arrowDown.svg";
+import styles from './SelectSports.style';
+import ArrowDown from "../../../assets/icons/arrowDown.svg";
 
 interface IProps{
     selectedItem: ItemProps,

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {TouchableOpacity, View, Text } from 'react-native';
-import ArrowDown from "../../assets/icons/arrowDown.svg";
-import styles from './SelectLevelStyle';
+import ArrowDown from "../../../assets/icons/arrowDown.svg";
+import styles from './SelectLevel.style';
 
 interface IProps{
     selectedItemLevel: ItemPropsLevel,

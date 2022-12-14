@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {TouchableOpacity, View, Text } from 'react-native';
-import styles from './SelectGenderStyle';
-import ArrowDown from "../../assets/icons/arrowDown.svg";
+import styles from './SelectGender.style';
+import ArrowDown from "../../../assets/icons/arrowDown.svg";
 
 interface IProps{
     selectedItem: ItemProps,
@@ -40,7 +40,7 @@ const SelectGender = ({selectedItem, onSelect}: IProps) => {
     <>
     <View style={[styles.containter, dropDown &&{borderBottomLeftRadius: 0, borderBottomRightRadius: 0}]}>
         <TouchableOpacity style={styles.textAndArrow}>
-            <Text style={[styles.text, selectedItem &&{color: "#2D2D2D"}]}>{selectedItem.label !== "" ? selectedItem.label : `Select gender`}</Text>
+            <Text style={[styles.text, selectedItem.label !== "" &&{color: "#2D2D2D"}]}>{selectedItem.label !== "" ? selectedItem.label : `Select gender`}</Text>
             <TouchableOpacity style={styles.arrow} onPress={dropDownGender}>
                 <ArrowDown />
             </TouchableOpacity>

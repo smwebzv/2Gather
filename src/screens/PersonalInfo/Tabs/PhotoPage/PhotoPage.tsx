@@ -1,19 +1,17 @@
 import React, { useState } from "react";
-import {View, Text, Pressable, ImageBackground, TouchableOpacity} from "react-native";
-import styles from "./PersonalInfoStyle";
-import PictureIcon from "../../assets/icons/pictureIcon.svg";
-import Check from "../../assets/icons/check.svg";
-import Uncheck from "../../assets/icons/uncheck.svg";
-import Plus from "../../assets/icons/plus.svg";
+import {View, Text, ImageBackground, TouchableOpacity} from "react-native";
+import styles from "./PhotoPage.style";
+import PictureIcon from "../../../../assets/icons/pictureIcon.svg";
+import Check from "../../../../assets/icons/check.svg";
+import Uncheck from "../../../../assets/icons/uncheck.svg";
+import Plus from "../../../../assets/icons/plus.svg";
 import ImagePicker from 'react-native-image-crop-picker';
-import Close from "../../assets/icons/close.svg";
-
+import Close from "../../../../assets/icons/close.svg";
 
 const PhotoPage = ({setTab}) => {
     const [check, setCheck] = useState(true);
-    const [image, setImage] = useState("");
+    const [image, setImage] = useState();
     const [show, setShow] = useState(false);
-    const [selectPicture, setSelectPicture] = useState();
 
     const onSelectImage = () => {
         ImagePicker.openPicker({
@@ -43,7 +41,7 @@ const PhotoPage = ({setTab}) => {
     }
 
     return(
-        <View style={{width: "100%"}}>
+        <View style={styles.container}>
             <Text style={[styles.textTitle, {paddingBottom: 24}]}>Okay Orhan, let’s add {"\n"} some photos to your profile.</Text> 
                 <TouchableOpacity onPress={cropImage}>
                     <View style={styles.picture}>
@@ -51,7 +49,7 @@ const PhotoPage = ({setTab}) => {
                                 source={{
                                     uri: image
                                 }}
-                                style={{width: "100%", height: 312, position: "absolute"}}
+                                style={styles.img}
                             />
                         <View style={styles.pictureIcon}>
                             <PictureIcon />
@@ -76,7 +74,7 @@ const PhotoPage = ({setTab}) => {
                             source={{
                                 uri: image
                             }}
-                            style={{width: "100%", height: "100%", position: "absolute"}}
+                            style={styles.img}
                             />
                             <TouchableOpacity style={styles.close} onPress={() => deletePicture()}>
                                 <Close />
@@ -99,7 +97,4 @@ const PhotoPage = ({setTab}) => {
         </View>
     );
 }
-
 export default PhotoPage;
-
-

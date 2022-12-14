@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import styles from "./SignUpStyle";
+import styles from "./SignUp.style";
 import { SafeAreaView, TouchableOpacity, Text, View, TextInput} from "react-native";
 import GoogleLogo from "../../assets/icons/googleLogo.svg";
 import AppleLogo from "../../assets/icons/appleLogo.svg";
@@ -21,7 +21,7 @@ const SignUp = ({navigation}) => {
     }
 
     return(
-        <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container}>
         <Text style={[styles.text, { paddingBottom: 48}]}>Sign Up</Text>
         <View style={styles.inputHolder}>
             <Text style={styles.emailText}>Email</Text>
@@ -76,7 +76,7 @@ const SignUp = ({navigation}) => {
                 <View style={styles.textFrame}>
                     <Text style={[styles.text, {fontSize: 14, paddingTop: 48, paddingRight: 11}]}>Don’t have an account yet?</Text>
                     <Text 
-                        style={[styles.text, {fontSize: 14, color: "#4A5EE5", textDecorationLine: "underline"}]}
+                        style={[styles.text, {fontSize: 14, color: "#4A5EE5"}]}
                         onPress={() => navigation.navigate("Login")}
                     >
                     Login

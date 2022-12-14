@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import {View, Text,  Pressable} from "react-native";
-import SelectGender from "../../components/Select/SelectGender";
-import styles from "./PersonalInfoStyle";
+import {View, Text, TouchableOpacity} from "react-native";
+import SelectGender from "../../../../components/Select/SelectGender/SelectGender";
+
+import styles from "./GenderPage.style";
 
 interface ItemProps{
     label: string
@@ -21,15 +22,15 @@ const GenderPage = ({setTab}) => {
     }
 
     return(
-        <View style={{width: "100%"}}>
+        <View style={styles.container}>
             <Text style={styles.textTitle}>What’s your gender?</Text>
             <View style={[styles.inputHolder, {marginBottom: 128}]}>
                 <SelectGender selectedItem={selectedItem} onSelect={onSelect}/>
             </View>
             <View style={styles.buttonFrame}>
-                <Pressable style={[styles.button, selectedItem.label === "" &&{backgroundColor: "#F4F3FF4D"}]}>
+                <TouchableOpacity style={[styles.button, selectedItem.label === "" &&{backgroundColor: "#F4F3FF4D"}]}>
                     <Text style={styles.buttonText} onPress={() => selectedItem.label === "" ? null : setTab(3)}>Next</Text>
-                </Pressable>
+                </TouchableOpacity>
             </View>
         </View> 
     );
