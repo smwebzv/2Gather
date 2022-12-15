@@ -24,6 +24,7 @@ const SportsPage = () => {
             id: 0
         }
     ])
+    const [selectedSports, setSelectedSports] = useState([]);
     
     const [selectedItem, setSelectedItem] = useState<ItemProps>({
         sport: "",
@@ -44,6 +45,16 @@ const SportsPage = () => {
     const onSelectLevel = (item) => {
         setSelectedItemLevel(item)
     }
+
+    const handleSelectedSport = (index) => {
+        let oldCart = [...sports];
+        if(oldCart[index]?.selected === true){
+            oldCart[index].selected = false
+        }else{
+            oldCart[index].selected = true
+        }
+        setSports(oldCart);
+     }
 
     const handleAddSports = () => {
         const oldCart = cart.slice();
@@ -71,7 +82,7 @@ const SportsPage = () => {
                 <View style={{width: "100%"}}>
                     <View style={{marginBottom: 16}}>
                         <View style={{marginBottom: 8}} key={index}>
-                            <SelectSports selectedItem={selectedItem} onSelect={onSelect} handleAddSports={handleAddSports} sports={sports}/>
+                            <SelectSports selectedItem={selectedItem} onSelect={handleSelectedSport} sports={sports} handleAddSports={handleAddSports} outsideIndex={index}/>
                         </View>
                         <View>
                             <SelectLevel selectedItemLevel={selectedItemLevel} onSelectLevel={onSelectLevel}/>
@@ -88,7 +99,7 @@ const SportsPage = () => {
             <View style={styles.buttonFrame}>
                 <TouchableOpacity 
                     style={[styles.button, (selectedItem.sport === "" || selectedItemLevel.level === "") &&{backgroundColor: "#F4F3FF4D"}]} 
-                    onPress={() => (selectedItem.sport === "" || selectedItemLevel.level === "") ? null : handleAddSports()}
+                    onPress={() =>  handleAddSports()}
                 >
                     <Text style={styles.buttonText}>Add sports</Text>
                 </TouchableOpacity>

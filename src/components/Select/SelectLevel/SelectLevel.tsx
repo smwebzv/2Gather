@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {TouchableOpacity, View, Text } from 'react-native';
+import {TouchableOpacity, View, Text, FlatList } from 'react-native';
 import ArrowDown from "../../../assets/icons/arrowDown.svg";
 import styles from './SelectLevel.style';
 
@@ -52,25 +52,24 @@ const SelectLevel = ({selectedItemLevel, onSelectLevel}: IProps) => {
     <>
     <View style={[styles.containter, dropDown &&{borderBottomLeftRadius: 0, borderBottomRightRadius: 0}]}>
         <TouchableOpacity style={styles.textAndArrow}>
-            <Text style={styles.text}>{selectedItemLevel.level !== "" ? selectedItemLevel.level : `Select level`}</Text>
+            <Text style={[styles.text, selectedItemLevel.level !== "" &&{color: "#2D2D2D"}]}>{selectedItemLevel.level !== "" ? selectedItemLevel.level : `Select level`}</Text>
             <TouchableOpacity style={styles.arrow} onPress={dropDownGender}>
                 <ArrowDown />
             </TouchableOpacity>
         </TouchableOpacity>            
     </View>
         { dropDown && 
-            <View style={styles.dropDownStyle}>
-            {
-                levels.map((item, index) => 
-                <TouchableOpacity key={index} onPress={() => onSelectedItem(item)}>
-                    <Text style={[styles.text, {height: 30}]}>{item.level}</Text>
-                </TouchableOpacity>
-                )
-            }
-            </View>
+            <FlatList 
+                style={styles.dropDownStyle}
+                data={levels}
+                renderItem={({item, index}) => 
+                    <TouchableOpacity key={index} onPress={() => onSelectedItem(item)}>
+                        <Text style={[styles.text, {height: 30}]}>{item.level}</Text>
+                    </TouchableOpacity>
+                    }
+            />
         }
     </>
   );
 };
-
 export default SelectLevel;

@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import {TouchableOpacity, View, Text } from 'react-native';
+import {TouchableOpacity, View, Text, FlatList } from 'react-native';
 import styles from './SelectSports.style';
 import ArrowDown from "../../../assets/icons/arrowDown.svg";
 
 interface IProps{
     selectedItem: ItemProps,
-    onSelect: (item: ItemProps) => void,
+    onSelect: (index: number) => void,
     handleAddSports:() => void,
     sports: any
+    outsideIndex: number
 }
 
 interface ItemProps{
@@ -15,7 +16,7 @@ interface ItemProps{
     id: number
 }
 
-const SelectSport = ({selectedItem, onSelect, sports}: IProps) => {
+const SelectSport = ({selectedItem, onSelect, sports, outsideIndex}: IProps) => {
 
     const [dropDown, setDropDown] = useState(false);
 
@@ -23,31 +24,35 @@ const SelectSport = ({selectedItem, onSelect, sports}: IProps) => {
         setDropDown(!dropDown);
     };
 
-    const onSelectedItem = (item) => {
+    const onSelectedItem = (index) => {
         setDropDown(false)
-        onSelect(item)
+        onSelect(index)
     }
-
+    console.log(outsideIndex !== -1);
+    
   return (
     <>
     <View style={[styles.containter, dropDown &&{borderBottomLeftRadius: 0, borderBottomRightRadius: 0}]}>
         <TouchableOpacity style={styles.textAndArrow}>
-            <Text style={styles.text}>{selectedItem.sport !== "" ? selectedItem.sport : `Select sports`}</Text>
+            <Text style={[styles.text, selectedItem.sport !== "" &&{color: "#2D2D2D"}]}>{selectedItem.sport !== "" ? selectedItem.sport : `Select sports`}</Text>
             <TouchableOpacity style={styles.arrow} onPress={dropDownGender}>
                 <ArrowDown />
             </TouchableOpacity>
         </TouchableOpacity>            
     </View>
         { dropDown && 
-            <View style={styles.dropDownStyle}>
-            {
-                sports.map((item, index) => 
-                <TouchableOpacity key={index} onPress={() => onSelectedItem(item)}>
+            <FlatList 
+                style={styles.dropDownStyle}
+                data={sports}
+                renderItem={({item, index}) => 
+                (item.selected === false && outsideIndex !== -1) ?
+                <TouchableOpacity key={index} onPress={() =>  onSelectedItem(index)}>
                     <Text style={[styles.text, {height: 30}]}>{item.sport}</Text>
                 </TouchableOpacity>
-                )
-            }
-            </View>
+                :
+                null
+                }
+            />
         }
     </>
   );

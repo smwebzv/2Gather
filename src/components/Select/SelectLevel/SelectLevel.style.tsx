@@ -43,8 +43,6 @@ const styles = StyleSheet.create({
       paddingTop: 10,
       borderBottomLeftRadius: 0,
       borderBottomRightRadius: 0,
-      alignItems: "flex-start",
-      justifyContent: "center",
       zIndex: 10,
     },
 })

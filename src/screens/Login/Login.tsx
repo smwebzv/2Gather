@@ -18,7 +18,7 @@ const Login = ({navigation}) => {
         dispatch(setProfile(true))
     }
     return(
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
             <Text style={styles.text}>Login</Text>
             <View style={styles.inputHolder}>
                 <Text style={styles.emailText}>Email</Text>
@@ -46,7 +46,7 @@ const Login = ({navigation}) => {
             </View>
             <View style={styles.buttonFrame}>
                 <View>
-                    <Button title={"Login"} onPress={login} isActive={false}/>
+                    <Button title={"Login"} onPress={login}/>
                     <Text style={[styles.text, {fontSize: 14, paddingVertical: 36, textAlign: "center"}]}>OR</Text>
                     <TouchableOpacity style={styles.google}>
                         <GoogleLogo />
@@ -67,7 +67,7 @@ const Login = ({navigation}) => {
                     </View>
                 </View>
             </View>
-        </SafeAreaView>
+        </View>
     );
 }
 
