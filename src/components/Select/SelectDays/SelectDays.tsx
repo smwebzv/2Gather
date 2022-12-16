@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
-import {TouchableOpacity, View, Text, ScrollView, FlatList } from 'react-native';
-import styles from './SelectYears.style';
-import ArrowDown from "../../assets/icons/arrowDown.svg";
+import {TouchableOpacity, View, Text, FlatList } from 'react-native';
+import styles from './SelectDays.style';
+import ArrowDown from "../../../assets/icons/arrowDown.svg";
 
-const SelectDays = () => {
+const SelectDays = ({selectedItemDay, setSelectedItemDay}) => {
 
     const [dropDown, setDropDown] = useState(false);
-    const [selectedItem, setSelectedItem] = useState(false);
-
+    
     const dropDownGender = () => {
         setDropDown(!dropDown);
     };
 
     const onSelect = (item) => {
-        setSelectedItem(item)
+        setSelectedItemDay(item)
     }
 
     const onSelectedItem = (item) => {
@@ -28,7 +27,7 @@ const SelectDays = () => {
     <>
     <View style={[styles.containter, dropDown &&{borderBottomLeftRadius: 0, borderBottomRightRadius: 0}]}>
         <TouchableOpacity style={styles.textAndArrow}>
-            <Text style={[styles.text, selectedItem &&{color: "#2D2D2D"}]}>{selectedItem ? selectedItem : `DD`}</Text>
+            <Text style={[styles.text, selectedItemDay &&{color: "#2D2D2D"}]}>{selectedItemDay ? selectedItemDay : `DD`}</Text>
             <TouchableOpacity style={styles.arrow} onPress={dropDownGender}>
                 <ArrowDown />
             </TouchableOpacity>

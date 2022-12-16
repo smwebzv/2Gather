@@ -2,9 +2,7 @@ import { StyleSheet } from "react-native";
  
 const styles = StyleSheet.create({
     container:{
-        width: "100%",
         height: "100%",
-        display: "flex",
         alignItems: "center",
         justifyContent: "flex-end",
     },
@@ -85,7 +83,6 @@ const styles = StyleSheet.create({
     },
     textFrame: {
         width: "100%",
-        paddingHorizontal: 66,
         flexDirection: "row",
         alignItems: "flex-end",
         justifyContent: "center"

@@ -1,41 +1,29 @@
 import React, { useState } from 'react';
 import {TouchableOpacity, View, Text } from 'react-native';
-import ArrowDown from "../../assets/icons/arrowDown.svg";
-import styles from './SelectLevelStyle';
+import styles from './SelectGender.style';
+import ArrowDown from "../../../assets/icons/arrowDown.svg";
 
 interface IProps{
-    selectedItemLevel: ItemPropsLevel,
-    onSelectLevel: (item: ItemPropsLevel) => void
+    selectedItem: ItemProps,
+    onSelect: (item: ItemProps) => void
 }
 
-interface ItemPropsLevel{
-    level: string
+interface ItemProps{
+    label: string
     id: number
 }
 
-const SelectLevel = ({selectedItemLevel, onSelectLevel}: IProps) => {
+const SelectGender = ({selectedItem, onSelect}: IProps) => {
 
     const [dropDown, setDropDown] = useState(false);
-    const [levels, setLevel] = useState([
+    const [gender, setGender] = useState([
         {
-            level: "Beginner1",
+            label: "Male",
             id: 1,
         },
         {
-            level: "Beginner2",
+            label: "Female",
             id: 2,
-        },
-        {
-            level: "Intermediate1",
-            id: 3,
-        },
-        {
-            level: "Intermediate2",
-            id: 4,
-        },
-        {
-            level: "Advanced",
-            id: 5,
         },
     ]);
 
@@ -45,14 +33,14 @@ const SelectLevel = ({selectedItemLevel, onSelectLevel}: IProps) => {
 
     const onSelectedItem = (item) => {
         setDropDown(false)
-        onSelectLevel(item)
+        onSelect(item)
     }
 
   return (
     <>
     <View style={[styles.containter, dropDown &&{borderBottomLeftRadius: 0, borderBottomRightRadius: 0}]}>
         <TouchableOpacity style={styles.textAndArrow}>
-            <Text style={styles.text}>{selectedItemLevel.level !== "" ? selectedItemLevel.level : `Select level`}</Text>
+            <Text style={[styles.text, selectedItem.label !== "" &&{color: "#2D2D2D"}]}>{selectedItem.label !== "" ? selectedItem.label : `Select gender`}</Text>
             <TouchableOpacity style={styles.arrow} onPress={dropDownGender}>
                 <ArrowDown />
             </TouchableOpacity>
@@ -61,9 +49,9 @@ const SelectLevel = ({selectedItemLevel, onSelectLevel}: IProps) => {
         { dropDown && 
             <View style={styles.dropDownStyle}>
             {
-                levels.map((item, index) => 
+                gender.map((item, index) => 
                 <TouchableOpacity key={index} onPress={() => onSelectedItem(item)}>
-                    <Text style={[styles.text, {height: 30}]}>{item.level}</Text>
+                    <Text style={[styles.text, {height: 30}]}>{item.label}</Text>
                 </TouchableOpacity>
                 )
             }
@@ -73,4 +61,4 @@ const SelectLevel = ({selectedItemLevel, onSelectLevel}: IProps) => {
   );
 };
 
-export default SelectLevel;
+export default SelectGender;

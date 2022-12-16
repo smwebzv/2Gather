@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import styles from "./LoginStyle";
-import { SafeAreaView, Text, View, TextInput, TouchableOpacity} from "react-native";
+import styles from "./Login.style";
+import { SafeAreaView, Text, View, TextInput, TouchableOpacity, Linking, KeyboardAvoidingView} from "react-native";
 import GoogleLogo from "../../assets/icons/googleLogo.svg";
 import AppleLogo from "../../assets/icons/appleLogo.svg";
 import Eye from "../../assets/icons/eye.svg";
@@ -46,20 +46,20 @@ const Login = ({navigation}) => {
             </View>
             <View style={styles.buttonFrame}>
                 <View>
-                    <Button title={"Login"} onPress={login} isActive={false}/>
+                    <Button title={"Login"} onPress={login}/>
                     <Text style={[styles.text, {fontSize: 14, paddingVertical: 36, textAlign: "center"}]}>OR</Text>
-                    <TouchableOpacity style={styles.google}>
+                    <TouchableOpacity style={styles.google} onPress={() => Linking.openURL('https://accounts.google.com')}>
                         <GoogleLogo />
                         <Text style={styles.googleText}>Login with Google</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={[styles.google, {backgroundColor: "#000000", marginBottom: 0}]}>
+                    <TouchableOpacity style={[styles.google, {backgroundColor: "#000000", marginBottom: 0}]} onPress={() => Linking.openURL('https://developer.apple.com')}>
                         <AppleLogo />
                         <Text style={[styles.googleText, {color: "#fff"}]}>Login with Apple</Text>
                     </TouchableOpacity>
                     <View style={styles.textFrame}>
                         <Text style={[styles.text, {fontSize: 14, paddingTop: 68, paddingRight: 11}]}>Don’t have an account yet?</Text>
                         <Text 
-                            style={[styles.text, {fontSize: 14, color: "#4A5EE5", textDecorationLine: "underline"}]}
+                            style={[styles.text, {fontSize: 14, color: "#4A5EE5"}]}
                             onPress={() => navigation.navigate("SignUp")}
                         >
                         Sign Up
