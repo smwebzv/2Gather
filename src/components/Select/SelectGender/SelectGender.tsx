@@ -51,7 +51,7 @@ const SelectGender = ({selectedItem, onSelect}: IProps) => {
             {
                 gender.map((item, index) => 
                 <TouchableOpacity key={index} onPress={() => onSelectedItem(item)}>
-                    <Text style={[styles.text, {height: 30}]}>{item.label}</Text>
+                    <Text style={[styles.text, {height: 30, minWidth: "100%"}]}>{item.label}</Text>
                 </TouchableOpacity>
                 )
             }
