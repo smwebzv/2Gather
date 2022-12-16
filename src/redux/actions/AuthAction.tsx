@@ -13,3 +13,11 @@ export const setProfile = (payload: boolean) => {
     }
 }
 
+export const setSubmitProfile = (payload: boolean) => {
+    return {
+        type: "setSubmitProfile",
+        payload: payload
+    }
+}
+
+

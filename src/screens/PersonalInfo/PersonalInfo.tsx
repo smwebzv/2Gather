@@ -8,10 +8,12 @@ import PhotoPage from "./Tabs/PhotoPage/PhotoPage";
 import SportsPage from "./Tabs/SportsPage/SportsPage";
 import ArrowLeft from "../../assets/icons/leftArrow";
 import ArrowRight from "../../assets/icons/rightArrow";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setProfile, setToken } from "../../redux/actions/AuthAction";
 
+
 const PersonalInfo = ({navigation}) => {
+    const profileInf = useSelector(state => state.auth.submitProfile);
     const [tab, setTab] = useState(1);
     const dispatch = useDispatch()
     
@@ -60,7 +62,7 @@ const PersonalInfo = ({navigation}) => {
                         </View>
                         :
                         <View>
-                            <TouchableOpacity style={styles.button} onPress={() => submitPersonalInfo()}>
+                            <TouchableOpacity style={[styles.button, !profileInf &&{backgroundColor: "#F4F3FF4D"}]} onPress={() => !profileInf ? null : submitPersonalInfo()}>
                                 <Text style={styles.buttonText}>Done</Text>
                             </TouchableOpacity>
                         </View>
@@ -71,7 +73,7 @@ const PersonalInfo = ({navigation}) => {
                             <ArrowRight />
                         </TouchableOpacity>
                         :
-                        <View></View>
+                        <View style={{width: 32, height: 32}}></View>
                     }  
                 </View>         
         </View>

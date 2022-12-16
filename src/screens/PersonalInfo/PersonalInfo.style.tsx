@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
         height: "100%",
         alignItems: "center",
         justifyContent: "center",
-        paddingHorizontal: 24
+        paddingHorizontal: 24,
     },
     skip:{
         alignItems: "center",

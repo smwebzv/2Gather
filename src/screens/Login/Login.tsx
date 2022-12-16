@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import styles from "./Login.style";
-import { SafeAreaView, Text, View, TextInput, TouchableOpacity} from "react-native";
+import { SafeAreaView, Text, View, TextInput, TouchableOpacity, Linking, KeyboardAvoidingView} from "react-native";
 import GoogleLogo from "../../assets/icons/googleLogo.svg";
 import AppleLogo from "../../assets/icons/appleLogo.svg";
 import Eye from "../../assets/icons/eye.svg";
@@ -18,7 +18,7 @@ const Login = ({navigation}) => {
         dispatch(setProfile(true))
     }
     return(
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Text style={styles.text}>Login</Text>
             <View style={styles.inputHolder}>
                 <Text style={styles.emailText}>Email</Text>
@@ -48,11 +48,11 @@ const Login = ({navigation}) => {
                 <View>
                     <Button title={"Login"} onPress={login}/>
                     <Text style={[styles.text, {fontSize: 14, paddingVertical: 36, textAlign: "center"}]}>OR</Text>
-                    <TouchableOpacity style={styles.google}>
+                    <TouchableOpacity style={styles.google} onPress={() => Linking.openURL('https://accounts.google.com')}>
                         <GoogleLogo />
                         <Text style={styles.googleText}>Login with Google</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={[styles.google, {backgroundColor: "#000000", marginBottom: 0}]}>
+                    <TouchableOpacity style={[styles.google, {backgroundColor: "#000000", marginBottom: 0}]} onPress={() => Linking.openURL('https://developer.apple.com')}>
                         <AppleLogo />
                         <Text style={[styles.googleText, {color: "#fff"}]}>Login with Apple</Text>
                     </TouchableOpacity>
@@ -67,7 +67,7 @@ const Login = ({navigation}) => {
                     </View>
                 </View>
             </View>
-        </View>
+        </SafeAreaView>
     );
 }
 
