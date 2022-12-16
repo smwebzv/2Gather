@@ -3,22 +3,6 @@ import {StyleSheet} from "react-native";
 const styles = StyleSheet.create({
     container:{
         width: "100%",
-        height: "100%",
-        alignItems: "center",
-        justifyContent: "center",
-        paddingHorizontal: 24
-    },
-    skip:{
-        fontFamily: 'Roboto',
-        fontStyle: "normal",
-        fontWeight: "600",
-        fontSize: 14,
-        alignItems: "center",
-        textAlign: "center",
-        color: "#FFFFFF",
-        position: "absolute",
-        top: 48,
-        right: 24
     },
     textTitle: {
         fontFamily: 'Inter',
@@ -28,22 +12,7 @@ const styles = StyleSheet.create({
         color: "#ffffff",
         paddingBottom: 36
     },
-    inputHolder:{
-        width: "100%"
-    },
-    input:{
-        width: "100%",
-        height: 50,
-        alignItems: "center",
-        justifyContent: "flex-start",
-        paddingLeft: 17,
-        fontFamily: 'Inter',
-        fontWeight: "400",
-        fontSize: 14,
-        color: "#000",
-        backgroundColor: "#ffffff",
-        borderRadius: 6,
-    },
+
     buttonFrame: {
         paddingHorizontal: 31,
         alignItems: "center",
@@ -63,26 +32,6 @@ const styles = StyleSheet.create({
         fontWeight: "600",
         fontFamily: "Inter"
     },
-    arrowFrame: {
-        width: "100%",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-        position: "absolute",
-        bottom: 63,
-    },
-    dotsFrame: {
-        width: 85,
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-    },
-    dots:{
-        width: 9,
-        height: 9,
-        backgroundColor: "#fff",
-        borderRadius: 100
-    },
     picture:{
         width: "100%",
         height: 312,
@@ -90,6 +39,11 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         alignItems: "center",
         justifyContent: "center",
+    },
+    img:{
+        width: "100%", 
+        height: "100%", 
+        position: "absolute"
     },
     pictureIcon:{
         width: 64,

@@ -29,10 +29,8 @@ const styles = StyleSheet.create({
     },
     buttonFrame: {
         paddingHorizontal: 31,
-        width: "100%"
     },
     button: {
-        width: "100%",
         height: 36,
         borderRadius: 4,
         display: "flex",

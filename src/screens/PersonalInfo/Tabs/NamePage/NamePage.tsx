@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import {View, Text, TextInput, Pressable} from "react-native";
-import styles from "./PersonalInfoStyle";
+import React  from "react";
+import {View, Text, TextInput, TouchableOpacity} from "react-native";
+import styles from "./NamePage.style";
 
 const NamePage = ({setTab}) => {
 
     return(
-        <View style={{width: "100%"}}>
+        <View style={styles.container}>
             <Text style={styles.textTitle}>What’s your name?</Text>
             <View style={[styles.inputHolder, {marginBottom: 128}]}>
                 <TextInput
@@ -14,9 +14,9 @@ const NamePage = ({setTab}) => {
                 </TextInput>
             </View>
             <View style={styles.buttonFrame}>
-                <Pressable style={styles.button}>
+                <TouchableOpacity style={styles.button}>
                     <Text style={styles.buttonText} onPress={() => setTab(2)}>Next</Text>
-                </Pressable>
+                </TouchableOpacity>
             </View>
         </View>        
     );

@@ -1,6 +1,7 @@
 const initialState = {
     token: false,
     profile: false,
+    submitProfile: false
 }
 
 export default (state = initialState, action) => {
@@ -15,6 +16,12 @@ export default (state = initialState, action) => {
             return{
                 ...state,
                 profile: action.payload
+            }
+        }
+        case "setSubmitProfile": {
+            return{
+                ...state,
+                submitProfile: action.payload
             }
         }
         default:

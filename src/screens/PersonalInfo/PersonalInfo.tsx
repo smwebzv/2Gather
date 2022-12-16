@@ -1,17 +1,19 @@
 import React, {useState}from "react";
-import {ImageBackground, SafeAreaView, View, Text, Touchable, TouchableOpacity, Pressable} from "react-native";
-import BirthdayPage from "./BirthdayPage";
-import GenderPage from "./GenderPage";
-import NamePage from "./NamePage";
-import styles from "./PersonalInfoStyle";
-import PhotoPage from "./PhotoPage";
-import SportsPage from "./SportsPage";
+import {View, Text, TouchableOpacity} from "react-native";
+import BirthdayPage from "./Tabs/BirthdayPage/BirthdayPage";
+import GenderPage from "./Tabs/GenderPage/GenderPage";
+import NamePage from "./Tabs/NamePage/NamePage";
+import styles from "./PersonalInfo.style";
+import PhotoPage from "./Tabs/PhotoPage/PhotoPage";
+import SportsPage from "./Tabs/SportsPage/SportsPage";
 import ArrowLeft from "../../assets/icons/leftArrow";
 import ArrowRight from "../../assets/icons/rightArrow";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setProfile, setToken } from "../../redux/actions/AuthAction";
 
-const PersonalInfo = () => {
+
+const PersonalInfo = ({navigation}) => {
+    const profileInf = useSelector(state => state.auth.submitProfile);
     const [tab, setTab] = useState(1);
     const dispatch = useDispatch()
     
@@ -37,18 +39,18 @@ const PersonalInfo = () => {
     }
 
     return(
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
             <TouchableOpacity style={styles.skip} onPress={() => changeTab("skip")}>
-                <Text style={{color: "#fff"}}>SKIP</Text>
+                <Text style={styles.skipText}>SKIP</Text>
             </TouchableOpacity>
                 {tab === 1 && <NamePage setTab={setTab}/>}
                 {tab === 2 && <GenderPage setTab={setTab}/>}
                 {tab === 3 && <BirthdayPage setTab={setTab}/>}
                 {tab === 4 && <PhotoPage setTab={setTab}/>}
-                {tab === 5 && <SportsPage setTab={undefined} />}
+                {tab === 5 && <SportsPage />}
 
-                <View style={[styles.arrowFrame, tab === 5 && {justifyContent: "flex-start"}]}>
-                    <TouchableOpacity onPress={() => changeTab("back")}>
+                <View style={[styles.arrowFrame, tab === 5 && {justifyContent: "space-between"}]}>
+                    <TouchableOpacity onPress={() => tab === 1 ? navigation.navigate("OnboardingGet") : changeTab("back")}>
                         <ArrowLeft/>
                     </TouchableOpacity>
                     {
@@ -59,20 +61,22 @@ const PersonalInfo = () => {
                         )}
                         </View>
                         :
-                        <View style={{marginLeft: 95}}>
-                            <TouchableOpacity style={styles.button} onPress={() => submitPersonalInfo()}>
+                        <View>
+                            <TouchableOpacity style={[styles.button, !profileInf &&{backgroundColor: "#F4F3FF4D"}]} onPress={() => !profileInf ? null : submitPersonalInfo()}>
                                 <Text style={styles.buttonText}>Done</Text>
                             </TouchableOpacity>
                         </View>
                     }
                     {
-                        tab !== 5 && 
+                        tab !==5 ?
                         <TouchableOpacity onPress={() => changeTab("skip")}>
                             <ArrowRight />
                         </TouchableOpacity>
-                    }
+                        :
+                        <View style={{width: 32, height: 32}}></View>
+                    }  
                 </View>         
-        </SafeAreaView>
+        </View>
     );
 }
 
