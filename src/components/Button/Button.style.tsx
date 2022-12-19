@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     buttonText: {
         color: "#ffffff",
         fontSize: 14,
-        fontWeight: "500",
+        fontWeight: "600",
         fontFamily: "Inter",
     }
 })

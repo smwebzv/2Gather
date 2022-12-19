@@ -14,7 +14,7 @@ import { useDispatch } from "react-redux";
 const SignUp = ({navigation}) => {
     const dispatch = useDispatch();
     const [showPassword, setShowPassword] = useState(true);
-    const [check, setCheck] = useState(true);
+    const [check, setCheck] = useState(false);
 
     const signUp = () => {
         dispatch(setToken(true));
@@ -50,7 +50,7 @@ const SignUp = ({navigation}) => {
         <View style={styles.checkAndWarrning}>
             <View style={styles.checkFrame}>
                 {
-                check ? <Check onPress={() => setCheck(!check)}/> : 
+                !check ? <Check onPress={() => setCheck(!check)}/> : 
                 <Uncheck onPress={() => setCheck(!check)}/>
                 }
                 <Text style={[styles.text, {fontSize: 14, paddingLeft: 12, paddingBottom: 4}]}>I agree to the Terms and Privacy Policy.</Text>
@@ -63,7 +63,7 @@ const SignUp = ({navigation}) => {
         </View>
         <View style={styles.buttonFrame}>
             <View>
-                <Button title={"Sign Up"} onPress={signUp}/>
+                <Button title={"Sign Up"} onPress={() => check ? signUp() : setCheck(!check)}/>
                 <Text style={[styles.text, {fontSize: 14, paddingVertical: 24, textAlign: "center"}]}>OR</Text>
                 <TouchableOpacity style={styles.google} onPress={() => Linking.openURL('https://accounts.google.com')}>
                     <GoogleLogo />

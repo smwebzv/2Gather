@@ -6,8 +6,6 @@ const styles = StyleSheet.create({
       height: 50,
       alignItems: "flex-end",
       justifyContent: "center",
-      paddingLeft: 17,
-      paddingRight: 13,
       fontFamily: 'Inter',
       fontWeight: "400",
       fontSize: 14,
