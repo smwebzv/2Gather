@@ -11,7 +11,7 @@ const Onboarding = ({navigation}) => {
                 <Text style={styles.textTitle}>FIND PEOPLE & DO SPORTS</Text>
                 <Text style={styles.text}>Explore sports activities nearby & Get {"\n"} together with like-minded people</Text>
                 <View style={styles.buttonFrame}>
-                    <TouchableOpacity activeOpacity={1} style={styles.button} onPress={() => navigation.navigate("Login")}>
+                    <TouchableOpacity  style={styles.button} onPress={() => navigation.navigate("Login")}>
                         <Text style={styles.buttonText}>Let's Go</Text>
                     </TouchableOpacity>
                 </View>
