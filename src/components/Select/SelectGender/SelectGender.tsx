@@ -4,19 +4,8 @@ import styles from './SelectGender.style';
 import ArrowDown from "../../../assets/icons/arrowDown.svg";
 import SelectDropdown from 'react-native-select-dropdown'
 
-interface IProps{
-  selectedItem: ItemProps,
-  onSelect: (item: ItemProps) => void
-}
+const SelectGender = () => {
 
-interface ItemProps{
-  label: string
-  id: number
-}
-
-const SelectGender = ({selectedItem, onSelect}: IProps) => {
-
-    const [dropDown, setDropDown] = useState(false);
     const [gender, setGender] = useState([
         {
             label: "Male",
@@ -28,14 +17,6 @@ const SelectGender = ({selectedItem, onSelect}: IProps) => {
         },
     ]);
 
-    const dropDownGender = () => {
-        setDropDown(!dropDown);
-    };
-
-    const onSelectedItem = (item) => {
-        setDropDown(false)
-        onSelect(item)
-    }
 
   return (
     <>
@@ -49,10 +30,13 @@ const SelectGender = ({selectedItem, onSelect}: IProps) => {
     </View>*/}
       <SelectDropdown
         buttonStyle={styles.containter}
+        dropdownStyle={styles.dropDownStyle}
         defaultButtonText="Select gender"
         buttonTextStyle={styles.text}
-        rowStyle={{backgroundColor: "#fff"}}
-        rowTextStyle={styles.text}
+        dropdownIconPosition="right"
+        renderDropdownIcon={ArrowDown}
+        rowTextStyle={styles.dropDownText}
+        dropdownOverlayColor="transparent"
       	data={gender}
         onSelect={(selectedItem, index) => {
           console.log(selectedItem, index)
