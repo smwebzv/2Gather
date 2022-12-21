@@ -1,13 +1,15 @@
 import {StyleSheet} from "react-native";
+import fonts from "../../../helpers/fonts";
 
 const styles = StyleSheet.create({
     containter: {
       width: "100%",
       height: 50,
-      alignItems: "flex-end",
-      justifyContent: "center",
-      fontFamily: 'Inter',
-      fontWeight: "400",
+      alignItems: "center",
+      justifyContent: "flex-start",
+      paddingLeft: 17,
+      paddingRight: 13,
+      fontFamily: fonts.interRegular,
       fontSize: 14,
       color: "#000",
       backgroundColor: "#ffffff",
@@ -22,8 +24,7 @@ const styles = StyleSheet.create({
     text:{
       color: "#757F8C",
       fontSize: 14,
-      fontWeight: "400",
-      fontFamily: "Inter"
+      fontFamily: fonts.interRegular,
     },
     arrow:{
       width: 24,

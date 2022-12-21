@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import fonts from "../../helpers/fonts";
 
 const styles = StyleSheet.create({
     button: {
@@ -13,8 +14,7 @@ const styles = StyleSheet.create({
     buttonText: {
         color: "#ffffff",
         fontSize: 14,
-        fontWeight: "600",
-        fontFamily: "Inter",
+        fontFamily: fonts.interSemiBold
     }
 })
 

@@ -1,4 +1,5 @@
 import {StyleSheet} from "react-native";
+import fonts from "../../helpers/fonts";
 
 
 const styles = StyleSheet.create({
@@ -10,9 +11,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     textTitle: {
-        fontFamily: 'Inter',
+        fontFamily: fonts.interBold,
         fontSize: 18,
-        fontWeight: "700",
         textAlign: "center",
         color: "#ffffff",
         paddingTop: 60
@@ -21,8 +21,7 @@ const styles = StyleSheet.create({
         width: 312,
         color: "#ffffff",
         fontSize: 15,
-        fontWeight: "500",
-        fontFamily: 'Inter',
+        fontFamily: fonts.interMedium,
         textAlign: "center",
         paddingTop: 16,
         paddingBottom: 100
@@ -44,8 +43,7 @@ const styles = StyleSheet.create({
     buttonText: {
         color: "#ffffff",
         fontSize: 14,
-        fontWeight: "600",
-        fontFamily: "Inter"
+        fontFamily: fonts.interSemiBold
     }
 })
 
