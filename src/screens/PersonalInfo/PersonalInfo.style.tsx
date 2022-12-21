@@ -1,4 +1,5 @@
 import {StyleSheet} from "react-native";
+import fonts from "../../helpers/fonts";
 
 const styles = StyleSheet.create({
     container:{
@@ -15,17 +16,9 @@ const styles = StyleSheet.create({
         top: 48,
         right: 24
     },
-    skipText:{
-        color: "#FFFFFF",
-        fontFamily: 'Roboto',
-        fontStyle: "normal",
-        fontWeight: "600",
-        fontSize: 14,
-    },
     textTitle: {
-        fontFamily: 'Inter',
+        fontFamily: fonts.interBold,
         fontSize: 18,
-        fontWeight: "700",
         textAlign: "center",
         color: "#ffffff",
         paddingBottom: 36
@@ -39,8 +32,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "flex-start",
         paddingLeft: 17,
-        fontFamily: 'Inter',
-        fontWeight: "400",
+        fontFamily: fonts.interRegular,
         fontSize: 14,
         color: "#000",
         backgroundColor: "#ffffff",
@@ -62,8 +54,7 @@ const styles = StyleSheet.create({
     buttonText: {
         color: "#ffffff",
         fontSize: 14,
-        fontWeight: "600",
-        fontFamily: "Inter"
+        fontFamily: fonts.interSemiBold
     },
     arrowFrame: {
         width: "100%",
@@ -105,8 +96,7 @@ const styles = StyleSheet.create({
         paddingVertical: 18
     },
     text:{
-        fontFamily: 'Inter',
-        fontWeight: "600",
+        fontFamily: fonts.interSemiBold,
         fontSize: 24,
         color: "#FFFFFF",
     },

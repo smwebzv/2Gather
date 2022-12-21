@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import fonts from "../../helpers/fonts";
 
 const styles = StyleSheet.create({
     container:{
@@ -9,8 +10,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     text:{
-        fontFamily: 'Inter',
-        fontWeight: "600",
+        fontFamily: fonts.interSemiBold,
         fontSize: 24,
         color: "#FFFFFF",
     },
@@ -20,8 +20,7 @@ const styles = StyleSheet.create({
         marginBottom: 24
     },
     emailText:{
-        fontFamily: 'Inter',
-        fontWeight: "600",
+        fontFamily: fonts.interSemiBold,
         fontSize: 14,
         color: "#FFFFFF",
         paddingBottom: 8
@@ -33,8 +32,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "flex-start",
         paddingLeft: 17,
-        fontFamily: 'Inter',
-        fontWeight: "400",
+        fontFamily: fonts.interRegular,
         fontSize: 14,
         color: "#000",
         backgroundColor: "#ffffff",
@@ -56,8 +54,7 @@ const styles = StyleSheet.create({
         paddingLeft: 24
     },
     warrningTerms: {
-        fontFamily: 'Inter',
-        fontWeight: "500",
+        fontFamily: fonts.interMedium,
         fontSize: 12,
         color: "#FB4B4E",
         position: "absolute",
@@ -87,8 +84,7 @@ const styles = StyleSheet.create({
     buttonText: {
         color: "#ffffff",
         fontSize: 14,
-        fontWeight: "600",
-        fontFamily: "Inter"
+        fontFamily: fonts.interSemiBold
     },
     google:{
         height: 50,
@@ -102,8 +98,7 @@ const styles = StyleSheet.create({
     },
     googleText: {
         fontSize: 14,
-        fontWeight: "600",
-        fontFamily: "Inter",
+        fontFamily: fonts.interSemiBold,
         color: "#000",
         paddingLeft: 15,
     },

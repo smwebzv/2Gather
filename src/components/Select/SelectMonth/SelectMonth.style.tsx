@@ -1,4 +1,5 @@
 import {StyleSheet} from "react-native";
+import fonts from "../../../helpers/fonts";
 
 const styles = StyleSheet.create({
     containter: {
@@ -8,8 +9,7 @@ const styles = StyleSheet.create({
       justifyContent: "center",
       paddingLeft: 9,
       paddingRight: 5,
-      fontFamily: 'Inter',
-      fontWeight: "400",
+      fontFamily: fonts.interRegular,
       fontSize: 14,
       color: "#000",
       backgroundColor: "#ffffff",
@@ -25,8 +25,7 @@ const styles = StyleSheet.create({
     text:{
       color: "#757F8C",
       fontSize: 14,
-      fontWeight: "400",
-      fontFamily: "Inter",
+      fontFamily: fonts.interRegular,
     },
     arrow:{
       width: 24,

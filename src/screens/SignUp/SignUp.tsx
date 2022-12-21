@@ -40,7 +40,7 @@ const SignUp = ({navigation}) => {
                 style={styles.input}
                 placeholder= "at least 8 characters"
                 placeholderTextColor="#757F8C"
-                keyboardType={showPassword ? "numeric" : "visible-password"}
+                secureTextEntry={showPassword}
                 >           
             </TextInput>
             {

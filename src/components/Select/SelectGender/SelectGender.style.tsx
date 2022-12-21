@@ -1,17 +1,13 @@
 import {StyleSheet} from "react-native";
+import fonts from "../../../helpers/fonts";
 
 const styles = StyleSheet.create({
     containter: {
-      width: "100%",
+      minWidth: "100%",
       height: 50,
-      alignItems: "flex-end",
-      justifyContent: "center",
-      fontFamily: 'Inter',
-      fontWeight: "400",
-      fontSize: 14,
-      color: "#000",
-      backgroundColor: "#ffffff",
       borderRadius: 6,
+      backgroundColor: "#fff",
+      paddingLeft: 13
     },
     textAndArrow: {
       width: "100%",
@@ -20,10 +16,18 @@ const styles = StyleSheet.create({
       justifyContent: "space-between"
     },
     text:{
-      color: "#757F8C",
+      color: "#2D2D2D",
       fontSize: 14,
-      fontWeight: "400",
-      fontFamily: "Inter"
+      fontFamily: fonts.interRegular,
+      position: "absolute",
+      right: 7,
+    },
+    dropDownText:{
+      fontSize: 14,
+      fontFamily: fonts.interRegular,
+      color: "#757F8C",
+      position: "absolute",
+      left: 7,
     },
     arrow:{
       width: 24,
@@ -32,18 +36,10 @@ const styles = StyleSheet.create({
       justifyContent: "center"
     },
     dropDownStyle:{
-      width: "100%",
-      position: "absolute",
-      top: 50,
-      left: 0,
+      borderBottomLeftRadius: 6,
+      borderBottomRightRadius: 6,
       backgroundColor: "#fff",
-      paddingLeft: 17,
-      paddingTop: 10,
-      borderBottomLeftRadius: 0,
-      borderBottomRightRadius: 0,
-      alignItems: "flex-start",
-      justifyContent: "center",
-      zIndex: 10
+      shadowColor: "transparent",
     },
 })
 
