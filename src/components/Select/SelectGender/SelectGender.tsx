@@ -1,63 +1,25 @@
-import React, { useState } from 'react';
-import {TouchableOpacity, View, Text } from 'react-native';
+import React, { useRef, useState } from 'react';
+import {TouchableOpacity, View, Text, ScrollView} from 'react-native';
 import styles from './SelectGender.style';
 import ArrowDown from "../../../assets/icons/arrowDown.svg";
+import {Picker} from '@react-native-picker/picker';
 
-interface IProps{
-    selectedItem: ItemProps,
-    onSelect: (item: ItemProps) => void
-}
 
-interface ItemProps{
-    label: string
-    id: number
-}
-
-const SelectGender = ({selectedItem, onSelect}: IProps) => {
-
-    const [dropDown, setDropDown] = useState(false);
-    const [gender, setGender] = useState([
-        {
-            label: "Male",
-            id: 1,
-        },
-        {
-            label: "Female",
-            id: 2,
-        },
-    ]);
-
-    const dropDownGender = () => {
-        setDropDown(!dropDown);
-    };
-
-    const onSelectedItem = (item) => {
-        setDropDown(false)
-        onSelect(item)
-    }
+const SelectGender = () => {
+    const [gender, setGender] = useState();
 
   return (
-    <>
-    <View style={[styles.containter, dropDown &&{borderBottomLeftRadius: 0, borderBottomRightRadius: 0}]}>
-        <TouchableOpacity style={styles.textAndArrow}>
-            <Text style={[styles.text, selectedItem.label !== "" &&{color: "#2D2D2D"}]}>{selectedItem.label !== "" ? selectedItem.label : `Select gender`}</Text>
-            <TouchableOpacity style={styles.arrow} onPress={dropDownGender}>
-                <ArrowDown />
-            </TouchableOpacity>
-        </TouchableOpacity>            
+    <View style={styles.containter}>
+        <Picker
+        selectedValue={gender}
+        onValueChange={(itemValue, itemIndex) => setGender(itemValue)}
+        style={{width: "100%", color: "#2D2D2D"}}
+        >   
+            <Picker.Item label="Select gender" value="select gender" style={styles.text}/>
+            <Picker.Item label="Male" value="male" style={styles.text}/>
+            <Picker.Item label="Female" value="female" style={styles.text}/>
+        </Picker>
     </View>
-        { dropDown && 
-            <View style={styles.dropDownStyle}>
-            {
-                gender.map((item, index) => 
-                <TouchableOpacity key={index} onPress={() => onSelectedItem(item)}>
-                    <Text style={[styles.text, {height: 30}]}>{item.label}</Text>
-                </TouchableOpacity>
-                )
-            }
-            </View>
-        }
-    </>
   );
 };
 

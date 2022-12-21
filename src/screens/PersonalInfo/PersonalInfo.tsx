@@ -40,9 +40,6 @@ const PersonalInfo = ({navigation}) => {
 
     return(
         <View style={styles.container}>
-            <TouchableOpacity style={styles.skip} onPress={() => changeTab("skip")}>
-                <Text style={styles.skipText}>SKIP</Text>
-            </TouchableOpacity>
                 {tab === 1 && <NamePage setTab={setTab}/>}
                 {tab === 2 && <GenderPage setTab={setTab}/>}
                 {tab === 3 && <BirthdayPage setTab={setTab}/>}

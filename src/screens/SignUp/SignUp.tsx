@@ -14,11 +14,13 @@ import { useDispatch } from "react-redux";
 const SignUp = ({navigation}) => {
     const dispatch = useDispatch();
     const [showPassword, setShowPassword] = useState(true);
-    const [check, setCheck] = useState(true);
+    const [check, setCheck] = useState(false);
+    const [show, setShow] = useState(false);
 
     const signUp = () => {
         dispatch(setToken(true));
     }
+
 
     return(
     <SafeAreaView style={styles.container}>
@@ -50,20 +52,20 @@ const SignUp = ({navigation}) => {
         <View style={styles.checkAndWarrning}>
             <View style={styles.checkFrame}>
                 {
-                check ? <Check onPress={() => setCheck(!check)}/> : 
-                <Uncheck onPress={() => setCheck(!check)}/>
+                !check ? <Check onPress={() => [setShow(!show), setCheck(!check)]}/> : 
+                <Uncheck onPress={() => [setShow(!show), setCheck(!check)]}/>
                 }
                 <Text style={[styles.text, {fontSize: 14, paddingLeft: 12, paddingBottom: 4}]}>I agree to the Terms and Privacy Policy.</Text>
             </View>
             <View style={styles.warrningHolder}>
                 {
-                    check && <Text style={styles.warrningTerms}>Please agree to the Terms and Conditions.</Text> 
+                    show && <Text style={styles.warrningTerms}>Please agree to the Terms and Conditions.</Text>
                 }
             </View>
         </View>
         <View style={styles.buttonFrame}>
             <View>
-                <Button title={"Sign Up"} onPress={signUp}/>
+                <Button title={"Sign Up"} onPress={() => !show && !check ? setShow(true) : signUp()}/>
                 <Text style={[styles.text, {fontSize: 14, paddingVertical: 24, textAlign: "center"}]}>OR</Text>
                 <TouchableOpacity style={styles.google} onPress={() => Linking.openURL('https://accounts.google.com')}>
                     <GoogleLogo />

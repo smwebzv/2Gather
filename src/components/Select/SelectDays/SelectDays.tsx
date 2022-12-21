@@ -26,9 +26,9 @@ const SelectDays = ({selectedItemDay, setSelectedItemDay}) => {
   return (
     <>
     <View style={[styles.containter, dropDown &&{borderBottomLeftRadius: 0, borderBottomRightRadius: 0}]}>
-        <TouchableOpacity style={styles.textAndArrow}>
+        <TouchableOpacity style={styles.textAndArrow} onPress={dropDownGender}>
             <Text style={[styles.text, selectedItemDay &&{color: "#2D2D2D"}]}>{selectedItemDay ? selectedItemDay : `DD`}</Text>
-            <TouchableOpacity style={styles.arrow} onPress={dropDownGender}>
+            <TouchableOpacity style={styles.arrow}>
                 <ArrowDown />
             </TouchableOpacity>
         </TouchableOpacity>            

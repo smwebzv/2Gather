@@ -93,7 +93,7 @@ const SportsPage = () => {
             {
             cart.map((item, index) =>
             <>
-            <View style={styles.selectFrame}key={index}>
+            <View style={styles.selectFrame} key={index}>
                 <Text style={[styles.textTitle, {paddingTop: 0, paddingRight: 12}]}>{index +1}.</Text>
                 <View style={{width: "100%"}}>
                     <View style={{marginBottom: 16}}>
