@@ -87,6 +87,10 @@ ios/
 vendor/
 
 
+# Android
+android/
+
+
 # lock files
 
 yarn.lock
